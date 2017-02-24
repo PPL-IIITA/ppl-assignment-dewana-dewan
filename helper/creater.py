@@ -1,4 +1,4 @@
-# import csv
+import csv
 import random
 import string
 
@@ -10,8 +10,8 @@ class randomWriter:
         self.girls_no = no_girls
 
     def makeBoys(self):
-        with open('../data/boys.csv', 'w') as csvfile:
-            fieldnames = ['name', 'attractiveness', 'intelligence', 'budget', 'is_committed', 'b_type']
+        with open('./data/boys.csv', 'w') as csvfile:
+            fieldnames = ['name', 'attractiveness', 'min_attr', 'intelligence', 'budget', 'is_committed', 'b_type']
             bwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
             bwriter.writeheader()
             b_type_choices = ['miser', 'generous', 'geeks']
@@ -19,6 +19,7 @@ class randomWriter:
                 temp_obj = {
                     'name': random.choice(string.ascii_uppercase) + ''.join(random.choice(string.ascii_lowercase) for _ in range(5)),
                     'attractiveness': random.randint(0,100),
+                    'min_attr': random.randint(50,100),
                     'intelligence': random.randint(0,100),
                     'budget': random.randint(0,100),
                     'b_type': random.choice(b_type_choices),
@@ -28,7 +29,7 @@ class randomWriter:
                 bwriter.writerow(temp_obj)
 
     def makeGirls(self):
-        with open('../data/girls.csv', 'w') as csvfile:
+        with open('./data/girls.csv', 'w') as csvfile:
             fieldnames = ['name', 'attractiveness', 'intelligence', 'maintainance', 'is_committed', 'g_type', 'choose_type']
             gwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
             gwriter.writeheader()

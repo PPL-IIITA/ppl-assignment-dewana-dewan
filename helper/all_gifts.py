@@ -1,7 +1,10 @@
 class gift_essential :
 	def __init__(self, valu, pric) :
-		self.price = int(valu) # int
-		self.value = int(pric) # int
+		self.price = int(pric) # int
+		self.value = int(valu)
+		pass
+	def name(self):
+		return self.__class__.__name__
 		
 
 class gift_utility :
@@ -10,6 +13,9 @@ class gift_utility :
 		self.utility_class = utility_class # string
 		self.price = int(price) # int
 		self.value = int(value) # int
+	
+	def name(self):
+		return self.__class__.__name__
 		
 
 class gift_luxury :
@@ -18,4 +24,6 @@ class gift_luxury :
 		self.difficulty = int(difficulty) # int
 		self.price = int(price) # int
 		self.value = int(value) # int
-		
+	
+	def name(self):
+		return self.__class__.__name__	

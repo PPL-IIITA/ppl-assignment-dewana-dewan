@@ -51,7 +51,7 @@ class randomWriter:
     
     def makeGifts(self):
         with open('./data/gifts.csv', 'w') as csvfile:
-            fieldnames = ['type', 'value', 'price', 'utility_value', 'utility_class', 'luxury_rating', 'difficult']
+            fieldnames = ['type', 'value', 'price', 'utility_value', 'utility_class', 'luxury_rating', 'difficulty']
             gftwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
             gftwriter.writeheader()
             for i in range(0, self.gift_no):
@@ -61,30 +61,30 @@ class randomWriter:
                     temp_obj = {
                         'type': 'essential', 
                         'value': random.randint(0,20), 
-                        'price': random.randint(0,20), 
+                        'price': random.randint(5,20), 
                         'utility_value': None, 
                         'utility_class': None, 
                         'luxury_rating': None, 
-                        'difficult': None
+                        'difficulty': None
                     }
                 elif(decd > 4 and decd <=8 ):
                     temp_obj = {
                         'type': 'utility', 
                         'value': random.randint(0,20), 
-                        'price': random.randint(0,20), 
+                        'price': random.randint(5,20), 
                         'utility_value': random.randint(0,10), 
                         'utility_class': random.randint(0,10), 
                         'luxury_rating': None, 
-                        'difficult': None
+                        'difficulty': None
                     }
                 else:
                     temp_obj = {
                         'type': 'luxury', 
-                        'value': random.randint(0,20), 
-                        'price': random.randint(0,20), 
+                        'value': random.randint(10,40), 
+                        'price': random.randint(10,40), 
                         'utility_value': None, 
                         'utility_class': None, 
                         'luxury_rating':random.randint(0,10), 
-                        'difficult':random.randint(0,10)
+                        'difficulty':random.randint(0,10)
                     }
                 gftwriter.writerow(temp_obj)

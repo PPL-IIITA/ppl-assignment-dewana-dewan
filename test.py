@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath('./helper/'))
 from creater import randomWriter
 from reader import ReaderC
 
-rWriter = randomWriter(20, 10, 50)
+rWriter = randomWriter(20, 10, 10)
 rWriter.makeBoys()
 rWriter.makeGirls()
 rWriter.makeGifts()

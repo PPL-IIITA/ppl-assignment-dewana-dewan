@@ -1,3 +1,5 @@
+from weiter import write_gift
+
 class BMiser:
     def __init__(self, obja):
         self.name = obja['name']
@@ -9,6 +11,18 @@ class BMiser:
         self.is_committed = obja['is_committed']
         self.to_commited = None       
         self.happiness = None
+
+    def gifter(self, girl, arrGFT, arrL):
+        i = 0
+        lgr = write_gift()
+        while (self.spent <= self.budget and self.spent <= girl.maintainance and i < len(arrGFT)):
+            if(self.spent + arrGFT[i].price <= self.budget):
+                self.spent += arrGFT[i].price
+                girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
+                lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
+            i += 1
+        lgr.log_end()
+
 
 class BGenerous:
     def __init__(self, obja):
@@ -22,6 +36,16 @@ class BGenerous:
         self.to_commited = None       
         self.happiness = None
         
+    def gifter(self, girl, arrGFT, arrL):
+        i = len(arrGFT) - 1
+        lgr = write_gift()
+        while (self.spent <= self.budget and i >=0):
+            if(self.spent + arrGFT[i].price <= self.budget):
+                self.spent += arrGFT[i].price
+                girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
+                lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
+            i -= 1
+        lgr.log_end()
 
 class BGeek:
     def __init__(self, obja):
@@ -34,6 +58,25 @@ class BGeek:
         self.is_committed = obja['is_committed']
         self.to_commited = None       
         self.happiness = None
+
+    def gifter(self, girl, arrGFT, arrL):
+        i = 0
+        flg = 0
+        lgr = write_gift()
+        while (self.spent <= self.budget and i < len(arrGFT)):
+            if(self.spent + arrGFT[i].price <= self.budget):
+                self.spent += arrGFT[i].price
+                girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
+                if(arrGFT[i].name() == 'gift_luxury'):
+                    flg += 1
+                lgr.log(self.name, girl.name,arrGFT[i].name(), arrGFT[i].price)
+            i += 1
+
+        if(self.spent + arrL[0].price <= self.budget and flg == 0):
+            self.spent += arrL[0].price
+            girl.gift_received[arrL[0].name()].append(arrL[0])                
+
+        lgr.log_end()
         
 class GChoosy:
     def __init__(self, obja):
@@ -43,9 +86,15 @@ class GChoosy:
         self.maintainance = int(obja['maintainance'])
         self.is_committed = obja['is_committed']
         self.choose_type = obja['choose_type']
-        self.gift_received = None
+        self.gift_received = {
+            'gift_luxury':[],
+            'gift_essential':[],
+            'gift_utility':[]
+        }
         self.happiness = None
-        self.to_commited = None       
+        self.to_commited = None
+
+           
 
 class GNormal:
     def __init__(self, obja):
@@ -55,7 +104,11 @@ class GNormal:
         self.maintainance = int(obja['maintainance'])
         self.is_committed = obja['is_committed']
         self.choose_type = obja['choose_type']
-        self.gift_received = None
+        self.gift_received = {
+            'gift_luxury':[],
+            'gift_essential':[],
+            'gift_utility':[]
+        }        
         self.happiness = None
         self.to_commited = None       
 
@@ -67,7 +120,11 @@ class GDesperate:
         self.maintainance = int(obja['maintainance'])
         self.is_committed = obja['is_committed']
         self.choose_type = obja['choose_type']
-        self.gift_received = None 
+        self.gift_received = {
+            'gift_luxury':[],
+            'gift_essential':[],
+            'gift_utility':[]
+        }        
         self.happiness = None
         self.to_commited = None       
         

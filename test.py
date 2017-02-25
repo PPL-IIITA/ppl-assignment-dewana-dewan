@@ -15,8 +15,3 @@ rWriter.makeGirls()
 rWriter.makeGifts()
 
 ####################
-
-
-r1 = ReaderC()
-arr = r1.readT('b')
-print(arr)

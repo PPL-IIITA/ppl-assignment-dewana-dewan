@@ -14,9 +14,10 @@ logger = write_couple()
 
 arrCPL = []
 for a_girl in arrG:
-    newCPL = cpm.jodi_bana(a_girl, arrB)
+    newCPL, the_boy = cpm.jodi_bana(a_girl, arrB)
     if newCPL != None:
         arrCPL.append(newCPL)
+        print(newCPL.boy_name,' ==> ', newCPL.girl_name)
         logger.log(newCPL.boy_name, newCPL.girl_name)
 
 # Result of Q1 is in ./data/couples.csv

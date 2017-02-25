@@ -5,10 +5,10 @@ class write_couple:
     def __init__(self):
         pass
     
-    def log(self, gname, bname):
+    def log(self, gname, bname, h, c):
         with open('./data/couples.csv', 'a') as csvfile:
             logger = csv.writer(csvfile)
-            logger.writerow([datetime.datetime.now().isoformat(), gname, bname])
+            logger.writerow([datetime.datetime.now().isoformat(), gname, bname, h, c])
 
 class write_gift:
     def __init__(self):

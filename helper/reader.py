@@ -43,7 +43,7 @@ class ReaderC:
             # print(tem)
             if(tem['type'] == 'essential'):
                 new_gft = gift_essential(tem['value'], tem['price'])
-                print(tem['value'], tem['price'])
+                # print(tem['value'], tem['price'])
                 arrG_ess.append(new_gft)
             elif(tem['type'] == 'luxury'):
                 new_gft = gift_luxury(tem['value'], tem['price'], tem['luxury_rating'], tem['difficulty'])
@@ -55,8 +55,8 @@ class ReaderC:
         return self.__sort(arrG_all), self.__sort(arrG_ess), self.__sort(arrG_lux)
     
     def __sort(self, arr):
-        for i in range(len(arr) - 1):
-            for j in range(len(arr) - 1 - i):
+        for i in range(len(arr)):
+            for j in range(0, len(arr) - 1 - i):
                 if(arr[j].price >= arr[j + 1].price):
                     temp = arr[j]
                     arr[j] = arr[j + 1]

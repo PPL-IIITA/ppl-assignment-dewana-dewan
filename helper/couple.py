@@ -1,3 +1,5 @@
+from math import fabs
+
 class couple :
 	def __init__(self, bname, gname) :
 		self.boy_name = bname # string
@@ -11,6 +13,12 @@ class couple :
 	def compatibility_calculator (self, boy) :
 		# returns 
 		pass
+
+	def calc_all(self, b, g):
+		# print(b.happiness, g.happiness)
+		self.happiness = b.happiness + g.happiness
+		self.compatibility = fabs(b.budget - g.maintainance) + fabs(g.attractiveness - b.attractiveness) + fabs(g.intelligence - b.intelligence)
+
 
 class couple_maker :
 	def __init__(self) :
@@ -60,4 +68,5 @@ class couple_maker :
 					t_coll[j] = t_coll[j + 1]
 					t_coll[j + 1] = temp
 		return t_coll
+	
 

@@ -1,3 +1,4 @@
+from math import log, exp
 from weiter import write_gift
 
 class BMiser:
@@ -22,6 +23,9 @@ class BMiser:
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i += 1
         lgr.log_end()
+    
+    def calc_happiness(self, g):
+        self.happiness = self.budget - self.spent
 
 
 class BGenerous:
@@ -46,6 +50,9 @@ class BGenerous:
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i -= 1
         lgr.log_end()
+
+    def calc_happiness(self, g):
+        self.happiness = g.happiness
 
 class BGeek:
     def __init__(self, obja):
@@ -78,6 +85,9 @@ class BGeek:
 
         lgr.log_end()
         
+    def calc_happiness(self, g):
+        self.happiness = g.intelligence
+
 class GChoosy:
     def __init__(self, obja):
         self.name = obja['name']
@@ -93,8 +103,20 @@ class GChoosy:
         }
         self.happiness = None
         self.to_commited = None
-
-           
+    
+    def calc_happiness(self):
+        mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
+        self.happiness = 0
+        for i in range(3):
+            if(i == 1):
+                fct = 2
+            else:
+                fct = 1
+            for gft in self.gift_received[mapp[i]]:
+                # print(self.happiness)
+                self.happiness += (gft.price * fct)
+        self.happiness = log(self.happiness)
+        
 
 class GNormal:
     def __init__(self, obja):
@@ -112,6 +134,15 @@ class GNormal:
         self.happiness = None
         self.to_commited = None       
 
+    def calc_happiness(self):
+        mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
+        self.happiness = 0
+        for i in range(3):
+            for gft in self.gift_received[mapp[i]]:
+                self.happiness += gft.price
+                self.happiness += gft.value
+
+
 class GDesperate:
     def __init__(self, obja):
         self.name = obja['name']
@@ -128,3 +159,10 @@ class GDesperate:
         self.happiness = None
         self.to_commited = None       
         
+    def calc_happiness(self):
+        mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
+        self.happiness = 0
+        for i in range(3):
+            for gft in self.gift_received[mapp[i]]:
+                self.happiness += gft.price
+        self.happiness = exp(self.happiness)

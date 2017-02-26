@@ -20,4 +20,4 @@ for a_girl in arrG:
         print(newCPL.boy_name,' ==> ', newCPL.girl_name)
         logger.log(newCPL.boy_name, newCPL.girl_name)
 
-# Result of Q1 is in ./data/couples.csv
+# log of Q1 is in ./data/couples.csv

@@ -6,11 +6,19 @@ from weiter import write_gift
 
 class BMiser:
     """
-    Class of a miser boy
+    Class of a Miser boy
+    
+    attributes:
+    name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
+
     """
     def __init__(self, obja):
         """
+
         Initializes a boy of type Miser
+
+        and sets attributes appopriately
+
         """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
@@ -24,7 +32,9 @@ class BMiser:
 
     def gifter(self, girl, arrGFT, arrL):
         """
-        Contains logic for all gifting from the boy to his girlfriend
+        
+        Contains logic for all gifting from the Miser boy to his girlfriend
+        
         """
         i = 0
         lgr = write_gift()
@@ -38,15 +48,29 @@ class BMiser:
     
     def calc_happiness(self, g):
         """
+
         Calculates and sets happiness of boy
+        
         """
         self.happiness = self.budget - self.spent
 
 
 class BGenerous:
+    """
+    
+    class of generous boy
+
+    attributes:
+    name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
+
+    """
     def __init__(self, obja):
         """
+
         Initializes a boy of type Generous
+
+        and sets attributes appopriately
+        
         """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
@@ -60,7 +84,9 @@ class BGenerous:
         
     def gifter(self, girl, arrGFT, arrL):
         """
-        Contains logic for all gifting from the boy to his girlfriend
+
+        Contains logic for all gifting from Generous boy to his girlfriend
+
         """
         i = len(arrGFT) - 1
         lgr = write_gift()
@@ -74,14 +100,28 @@ class BGenerous:
 
     def calc_happiness(self, g):
         """
+        
         Calculates and sets happiness of boy
+
         """
         self.happiness = g.happiness
 
 class BGeek:
+    """
+
+    class of geek boy
+    
+    attributes:
+    name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
+
+    """
     def __init__(self, obja):
         """
+
         Initializes a boy of type Geek
+
+        and sets attributes appopriately
+
         """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
@@ -95,7 +135,9 @@ class BGeek:
 
     def gifter(self, girl, arrGFT, arrL):
         """
-        Contains logic for all gifting from the boy to his girlfriend
+
+        Contains logic for all gifting from Geek boy to his girlfriend
+        
         """
         i = 0
         flg = 0
@@ -108,26 +150,36 @@ class BGeek:
                     flg += 1
                 lgr.log(self.name, girl.name,arrGFT[i].name(), arrGFT[i].price)
             i += 1
-
-        if(self.spent + arrL[0].price <= self.budget and flg == 0):
-            self.spent += arrL[0].price
-            girl.gift_received[arrL[0].name()].append(arrL[0])                
+        
+        if(len(arrL) != 0):
+            if(self.spent + arrL[0].price <= self.budget and flg == 0):
+                self.spent += arrL[0].price
+                girl.gift_received[arrL[0].name()].append(arrL[0])                
 
         lgr.log_end()
         
     def calc_happiness(self, g):
         """
+
         Calculates and sets happiness of boy
+        
         """
         self.happiness = g.intelligence
 
 class GChoosy:
     """
+    
     Class of a Choosy girl
+
+    attributes:
+    name, attractiveness, intelligence, maintainance, is_commited, to_commited, happiness, choose_type, gifts_recieved 
+    
     """
     def __init__(self, obja):
         """
+    
         Initializes a Girl of type Choosy
+    
         """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
@@ -145,7 +197,9 @@ class GChoosy:
     
     def calc_happiness(self):
         """
+        
         Calculates and sets happiness of girl using appropriate logic
+        
         """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0
@@ -157,12 +211,20 @@ class GChoosy:
             for gft in self.gift_received[mapp[i]]:
                 # print(self.happiness)
                 self.happiness += (gft.price * fct)
-        self.happiness = log(self.happiness)
-        
+                # print(gft.price, self.happiness)
+        if(self.happiness > 0):
+            self.happiness = log(self.happiness)
+        else:
+            self.happiness = 0
 
 class GNormal:
     """
+    
     Class of a normal girl
+    
+    attributes:
+    name, attractiveness, intelligence, maintainance, is_commited, to_commited, happiness, choose_type, gifts_recieved 
+    
     """
     def __init__(self, obja):
         """
@@ -184,7 +246,9 @@ class GNormal:
 
     def calc_happiness(self):
         """
+
         Calculates and sets happiness of girl using appropriate logic
+
         """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0
@@ -196,11 +260,18 @@ class GNormal:
 
 class GDesperate:
     """
+
     Class of a desperate girl
+
+    attributes:
+    name, attractiveness, intelligence, maintainance, is_commited, to_commited, happiness, choose_type, gifts_recieved 
+    
     """
     def __init__(self, obja):
         """
+    
         Initializes a Girl of type Desperate
+    
         """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
@@ -218,7 +289,9 @@ class GDesperate:
         
     def calc_happiness(self):
         """
+    
         Calculates and sets happiness of girl using appropriate logic
+    
         """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0

@@ -1,16 +1,30 @@
 import csv
 import random
 import string
+"""
+Contains class randomWriter
+Creates random gifts, boys and girls
+
+"""
 
 class randomWriter:
     """ Creates random boys and girls """
 
     def __init__(self, no_boys, no_girls, no_gifts):
+        """
+        initializes a randomwriter
+        sets number of boys, girls and gifts
+        """
         self.boys_no = no_boys
         self.girls_no = no_girls
         self.gift_no = no_gifts
 
     def makeBoys(self):
+        """
+
+        this function creates random boys and places them in boys.csv
+        
+        """
         with open('./data/boys.csv', 'w') as csvfile:
             fieldnames = ['name', 'attractiveness', 'min_attr', 'intelligence', 'budget', 'is_committed', 'b_type']
             bwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -30,6 +44,11 @@ class randomWriter:
                 bwriter.writerow(temp_obj)
 
     def makeGirls(self):
+        """
+        
+        this function creates random girls and places them in girls.csv
+        
+        """
         with open('./data/girls.csv', 'w') as csvfile:
             fieldnames = ['name', 'attractiveness', 'intelligence', 'maintainance', 'is_committed', 'g_type', 'choose_type']
             gwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -50,6 +69,11 @@ class randomWriter:
                 gwriter.writerow(temp_obj)
     
     def makeGifts(self):
+        """
+        
+        this function creates random gifts and places them in gifts.csv
+        
+        """
         with open('./data/gifts.csv', 'w') as csvfile:
             fieldnames = ['type', 'value', 'price', 'utility_value', 'utility_class', 'luxury_rating', 'difficulty']
             gftwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -87,4 +111,5 @@ class randomWriter:
                         'luxury_rating':random.randint(0,10), 
                         'difficulty':random.randint(0,10)
                     }
+                print(temp_obj)
                 gftwriter.writerow(temp_obj)

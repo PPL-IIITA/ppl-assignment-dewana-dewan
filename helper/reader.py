@@ -1,13 +1,29 @@
 import csv
 from all_boys_girls import *
 from all_gifts import *
+"""
+
+contains class ReaderC
+reader created by thsi class can read boys, girls ad gifts from appropriate csv files
+
+"""
 
 class ReaderC:
 
     def __init__(self):
+        """
+        initializes a ReaderC class
+        """
         pass
 
     def readT(self, char_desc):
+        """
+
+        this funciton reads all boys, girls from appropriate .csv files
+        takes argument cahr_desc
+        and returns an array of read boys or girls
+        
+        """
         arrT = []
         if char_desc == 'b':
             the_file = csv.DictReader(open("./data/boys.csv"))            
@@ -35,6 +51,17 @@ class ReaderC:
         return arrT
     
     def readGFT(self):
+        """
+        
+        read gifts present in appropriate file(../data/gifts.csv)
+        sorts them
+        and returns gift 3 arrays
+        
+        arrG_all -> array of all gifts
+        arrG_ess -> array of all essential gifts
+        arrG_lux -> array of all luxury gifts
+
+        """
         arrG_all = []
         arrG_ess = []
         arrG_lux = []
@@ -55,6 +82,11 @@ class ReaderC:
         return self.__sort(arrG_all), self.__sort(arrG_ess), self.__sort(arrG_lux)
     
     def __sort(self, arr):
+        """
+        private
+        helper function
+        this sorts the array of gifts 
+        """
         for i in range(len(arr)):
             for j in range(0, len(arr) - 1 - i):
                 if(arr[j].price >= arr[j + 1].price):

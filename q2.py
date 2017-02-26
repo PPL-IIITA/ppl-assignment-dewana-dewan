@@ -29,18 +29,18 @@ for a_girl in arrG:
 print('Please enter k:')
 k = int(input())
 l =len(arrCPL)
-print('The k happiest couples  (boy_name, girl_name, happiness, compatibility):')
+print('The k happiest couples  (boy_name, girl_name, happiness, compatibility):\n')
 for i in range(0, k):
-    for j in range(0, len(arrCPL) - 1):
+    for j in range(0, len(arrCPL) - 1 - i):
         if(arrCPL[j].happiness >= arrCPL[j + 1].happiness):
             temp = arrCPL[j]
             arrCPL[j] = arrCPL[j + 1]
             arrCPL[j + 1] = temp
     print(arrCPL[l - i - 1].boy_name, arrCPL[l - i - 1].girl_name, arrCPL[l - i - 1].happiness, arrCPL[l - i - 1].compatibility)
 
-print('The k compatible couples  (boy_name, girl_name, happiness, compatibility):')
+print('\nThe k compatible couples  (boy_name, girl_name, happiness, compatibility):\n')
 for i in range(0, k):
-    for j in range(0, len(arrCPL) - 1):
+    for j in range(0, len(arrCPL) - 1 - i):
         if(arrCPL[j].compatibility >= arrCPL[j + 1].compatibility):
             temp = arrCPL[j]
             arrCPL[j] = arrCPL[j + 1]

@@ -1,8 +1,17 @@
+"""
+This file contains classes of all types of boys and girls
+"""
 from math import log, exp
 from weiter import write_gift
 
 class BMiser:
+    """
+    Class of a miser boy
+    """
     def __init__(self, obja):
+        """
+        Initializes a boy of type Miser
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -14,6 +23,9 @@ class BMiser:
         self.happiness = None
 
     def gifter(self, girl, arrGFT, arrL):
+        """
+        Contains logic for all gifting from the boy to his girlfriend
+        """
         i = 0
         lgr = write_gift()
         while (self.spent <= self.budget and self.spent <= girl.maintainance and i < len(arrGFT)):
@@ -25,11 +37,17 @@ class BMiser:
         lgr.log_end()
     
     def calc_happiness(self, g):
+        """
+        Calculates and sets happiness of boy
+        """
         self.happiness = self.budget - self.spent
 
 
 class BGenerous:
     def __init__(self, obja):
+        """
+        Initializes a boy of type Generous
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -41,6 +59,9 @@ class BGenerous:
         self.happiness = None
         
     def gifter(self, girl, arrGFT, arrL):
+        """
+        Contains logic for all gifting from the boy to his girlfriend
+        """
         i = len(arrGFT) - 1
         lgr = write_gift()
         while (self.spent <= self.budget and i >=0):
@@ -52,10 +73,16 @@ class BGenerous:
         lgr.log_end()
 
     def calc_happiness(self, g):
+        """
+        Calculates and sets happiness of boy
+        """
         self.happiness = g.happiness
 
 class BGeek:
     def __init__(self, obja):
+        """
+        Initializes a boy of type Geek
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -67,6 +94,9 @@ class BGeek:
         self.happiness = None
 
     def gifter(self, girl, arrGFT, arrL):
+        """
+        Contains logic for all gifting from the boy to his girlfriend
+        """
         i = 0
         flg = 0
         lgr = write_gift()
@@ -86,10 +116,19 @@ class BGeek:
         lgr.log_end()
         
     def calc_happiness(self, g):
+        """
+        Calculates and sets happiness of boy
+        """
         self.happiness = g.intelligence
 
 class GChoosy:
+    """
+    Class of a Choosy girl
+    """
     def __init__(self, obja):
+        """
+        Initializes a Girl of type Choosy
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -105,6 +144,9 @@ class GChoosy:
         self.to_commited = None
     
     def calc_happiness(self):
+        """
+        Calculates and sets happiness of girl using appropriate logic
+        """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0
         for i in range(3):
@@ -119,7 +161,13 @@ class GChoosy:
         
 
 class GNormal:
+    """
+    Class of a normal girl
+    """
     def __init__(self, obja):
+        """
+        Initializes a Girl of type Normal
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -135,6 +183,9 @@ class GNormal:
         self.to_commited = None       
 
     def calc_happiness(self):
+        """
+        Calculates and sets happiness of girl using appropriate logic
+        """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0
         for i in range(3):
@@ -144,7 +195,13 @@ class GNormal:
 
 
 class GDesperate:
+    """
+    Class of a desperate girl
+    """
     def __init__(self, obja):
+        """
+        Initializes a Girl of type Desperate
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -160,6 +217,9 @@ class GDesperate:
         self.to_commited = None       
         
     def calc_happiness(self):
+        """
+        Calculates and sets happiness of girl using appropriate logic
+        """
         mapp = ['gift_essential', 'gift_luxury', 'gift_utility']
         self.happiness = 0
         for i in range(3):

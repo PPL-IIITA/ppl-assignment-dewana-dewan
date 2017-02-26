@@ -1,6 +1,6 @@
 ## PPL-Assignment
 
-IIT2015097 - Aditya Dewan
+IIT2015097 -- Aditya Dewan
 
 
 **Language** -> Python(3.5.2)
@@ -28,3 +28,8 @@ _To view logs_
 couples: cat ./data/couples.csv
 gifting: cat ./data/gifts_log.csv
 ```
+_To view **[documentation](https://ppl-iiita.github.io/ppl-assignment-dewana-dewan/documentation/)**(click here or)_
+```
+firefox ./documentation/index.html
+```
+

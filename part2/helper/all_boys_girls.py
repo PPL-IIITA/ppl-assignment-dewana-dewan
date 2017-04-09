@@ -25,7 +25,7 @@ class BMiser(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """
-    def gifter(self, girl, arrGFT, arrL):
+    def gifter(self, girl, arrGFT, arrL, choice = 1):
         """
         
         Contains logic for all gifting from the Miser boy to his girlfriend
@@ -39,6 +39,20 @@ class BMiser(boy):
                 girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i += 1
+        
+        if(choice == 2):
+            if(len(girl.gift_received['gift_luxury']) == 0 and len(arrL) != 0):
+                self.spent += arrL[0].price
+                girl.gift_received[arrL[0].name()].append(arrL[0])
+            if(len(girl.gift_received['gift_essential']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_essential':
+                        girl.gift_received[gft.name()].append(gft)
+            if(len(girl.gift_received['gift_utility']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_utility':
+                        girl.gift_received[gft.name()].append(gft)
+
         lgr.log_end()
     
     def calc_happiness(self, g):
@@ -59,7 +73,7 @@ class BGenerous(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """    
-    def gifter(self, girl, arrGFT, arrL):
+    def gifter(self, girl, arrGFT, arrL, choice = 1):
         """
 
         Contains logic for all gifting from Generous boy to his girlfriend
@@ -73,6 +87,20 @@ class BGenerous(boy):
                 girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i -= 1
+
+        if(choice == 2):
+            if(len(girl.gift_received['gift_luxury']) == 0 and len(arrL) != 0):
+                self.spent += arrL[0].price
+                girl.gift_received[arrL[0].name()].append(arrL[0])
+            if(len(girl.gift_received['gift_essential']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_essential':
+                        girl.gift_received[gft.name()].append(gft)
+            if(len(girl.gift_received['gift_utility']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_utility':
+                        girl.gift_received[gft.name()].append(gft)
+
         lgr.log_end()
 
     def calc_happiness(self, g):
@@ -92,7 +120,7 @@ class BGeek(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """
-    def gifter(self, girl, arrGFT, arrL):
+    def gifter(self, girl, arrGFT, arrL, choice = 1):
         """
 
         Contains logic for all gifting from Geek boy to his girlfriend
@@ -114,6 +142,19 @@ class BGeek(boy):
             if(self.spent + arrL[0].price <= self.budget and flg == 0):
                 self.spent += arrL[0].price
                 girl.gift_received[arrL[0].name()].append(arrL[0])                
+
+        if(choice == 2):
+            if(len(girl.gift_received['gift_luxury']) == 0 and len(arrL) != 0):
+                self.spent += arrL[0].price
+                girl.gift_received[arrL[0].name()].append(arrL[0])
+            if(len(girl.gift_received['gift_essential']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_essential':
+                        girl.gift_received[gft.name()].append(gft)
+            if(len(girl.gift_received['gift_utility']) == 0):
+                for gft in arrGFT:
+                    if gft.name() == 'gift_utility':
+                        girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
         

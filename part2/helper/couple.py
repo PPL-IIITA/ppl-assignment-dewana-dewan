@@ -39,6 +39,13 @@ class couple :
 		self.compatibility = fabs(b.budget - g.maintainance) + fabs(g.attractiveness - b.attractiveness) + fabs(g.intelligence - b.intelligence)
 
 	def break_up(self, b_all, g_all):
+		"""
+
+		Function to proccess break up of a couple
+		sets apt variables to initial values
+		and removes commitment
+
+		"""
 		for a_boy in b_all:
 			if a_boy.name == self.boy_name:
 				the_boy = a_boy
@@ -77,6 +84,13 @@ class couple_maker :
 		pass
 	
 	def girl_choose(self, i, arrG, arrB):
+		"""
+
+		funciton girl_choose:
+		called so that a girl can choose an apt boyfriend, basically calls jodi_bana, but after some variable processing
+		implemented for ques 5
+
+		"""
 		i = int(i / 2)
 		# print(i, len(arrG), arrG[i].is_committed)
 		if (i >= len(arrG)):
@@ -88,6 +102,13 @@ class couple_maker :
 		return newcpl, boy, arrG[i]
 
 	def boy_choose(self, i, arrG, arrB):
+		"""
+
+		funciotn boy_choose:
+		called so that a boy can choose his girlfriend accorrding to his preferences
+		implemented for ques 5
+
+		"""
 		i = int(i / 2)
 		if (i >= len(arrB)):
 			return None, None, None

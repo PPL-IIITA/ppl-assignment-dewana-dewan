@@ -27,6 +27,7 @@ class ReaderC:
         arrT = []
         if char_desc == 'b':
             the_file = csv.DictReader(open("./data/boys.csv"))            
+            attr = 'attractiveness'
             for tem in the_file:
                 # print(tem['b_type'])
                 if(tem['b_type'] == 'miser'):
@@ -39,6 +40,7 @@ class ReaderC:
         
         elif char_desc == 'g':
             the_file = csv.DictReader(open("./data/girls.csv"))
+            attr = 'attractiveness'
             for tem in the_file:
                 # print(tem['b_type'])
                 if(tem['g_type'] == 'choosy'):
@@ -75,14 +77,13 @@ class ReaderC:
             elif(tem['type'] == 'luxury'):
                 new_gft = gift_luxury(tem['value'], tem['price'], tem['luxury_rating'], tem['difficulty'])
                 arrG_lux.append(new_gft)
-                print(new_gft.price)
             elif(tem['type'] == 'utility'):
                 new_gft = gift_utility(tem['value'], tem['price'], tem['utility_value'], tem['utility_class'])
             arrG_all.append(new_gft)
         
-        return self.__sort(arrG_all), self.__sort(arrG_ess), self.__sort(arrG_lux)
+        return self.__sort(arrG_all, 'price'), self.__sort(arrG_ess, 'price'), self.__sort(arrG_lux, 'price')
     
-    def __sort(self, arr):
+    def __sort(self, arr, attr):
         """
         private
         helper function
@@ -90,7 +91,7 @@ class ReaderC:
         """
         for i in range(len(arr)):
             for j in range(0, len(arr) - 1 - i):
-                if(arr[j].price >= arr[j + 1].price):
+                if(getattr(arr[j], attr) >= getattr(arr[j + 1], attr)):
                     temp = arr[j]
                     arr[j] = arr[j + 1]
                     arr[j + 1] = temp

@@ -38,6 +38,29 @@ class couple :
 		self.happiness = b.happiness + g.happiness
 		self.compatibility = fabs(b.budget - g.maintainance) + fabs(g.attractiveness - b.attractiveness) + fabs(g.intelligence - b.intelligence)
 
+	def break_up(self, b_all, g_all):
+		for a_boy in b_all:
+			if a_boy.name == self.boy_name:
+				the_boy = a_boy
+				break
+		for a_girl in g_all:
+			if a_girl.name == self.girl_name:
+				the_girl = a_girl
+				break
+		the_girl.is_committed = False
+		the_girl.gifts_recieved = {
+            'gift_luxury':[],
+            'gift_essential':[],
+            'gift_utility':[]
+        }
+		the_girl.happiness = None
+		the_girl.to_commited = None
+		the_boy.is_committed = False
+		the_boy.to_commited = None
+		the_boy.happiness = None
+		the_boy.spent = 0
+		return the_girl, the_boy
+
 
 class couple_maker :
 	"""
@@ -52,8 +75,35 @@ class couple_maker :
 	
 		"""
 		pass
-		
-	def jodi_bana (self, girl, single_boy_collection):
+	
+	def girl_choose(self, i, arrG, arrB):
+		i = int(i / 2)
+		print(i, len(arrG), arrG[i].is_committed)
+		if(i < len(arrG) and (arrG[i].is_committed == False)):
+			pass
+		else:
+			return None, None, None
+		newcpl = None
+		newcpl, boy = self.jodi_bana(arrG[i], arrB)
+		print('asdasda')
+		return newcpl, boy, arrG[i]
+
+	def boy_choose(self, i, arrG, arrB):
+		i = int(i / 2)
+		if(i < len(arrG) and (arrG[i].is_committed == False)):
+			pass
+		else:
+			return None, None, None
+		boy = arrB[i]
+		newcpl = None
+		for j in range(len(arrG)):
+			if(arrG[j].is_committed == False and (boy.budget >= arrG[j].maintainance) and (arrG[j].attractiveness >= boy.min_attr)):
+				newcpl = couple(boy.name, arrG[j].name)
+				print('yeess')
+		return newcpl, boy, arrG[j]
+
+
+	def jodi_bana (self, girl, single_boy_collection, no_boy = None):
 		"""	
 		Containes logic to form couples
 
@@ -67,11 +117,11 @@ class couple_maker :
 		"""
 		# print(girl.name, girl.choose_type)
 		if(girl.choose_type == 'm_attr'):
-			temp_boy = self.__find_apt(girl, self.__sortby('attractiveness', single_boy_collection))
+			temp_boy = self.__find_apt(girl, self.__sortby('attractiveness', single_boy_collection), no_boy)
 		elif(girl.choose_type == 'm_gen'):
-			temp_boy = self.__find_apt(girl, self.__sortby('intelligence', single_boy_collection))
+			temp_boy = self.__find_apt(girl, self.__sortby('intelligence', single_boy_collection), no_boy)
 		elif(girl.choose_type == 'm_rich'):
-			temp_boy = self.__find_apt(girl, self.__sortby('budget', single_boy_collection)) 
+			temp_boy = self.__find_apt(girl, self.__sortby('budget', single_boy_collection), no_boy) 
 		# print(temp_boy)
 		if(temp_boy == None):
 			print('No match found for ', girl.name)
@@ -84,7 +134,7 @@ class couple_maker :
 		return new_couple, temp_boy
 
 	
-	def __find_apt(self, girl, single_boy_collection):
+	def __find_apt(self, girl, single_boy_collection, no_boy = None):
 		"""
 
 		This function finds an appropriate boy for a girl 
@@ -97,10 +147,14 @@ class couple_maker :
 			# print(a_boy.name, a_boy.budget,' => ', girl.maintainance, girl.attractiveness, ' >= ', a_boy.min_attr)
 			# print(bool(a_boy.is_committed) == False, a_boy.budget >= girl.maintainance, girl.attractiveness >= a_boy.min_attr)
 			# print(type(a_boy.is_committed), type(a_boy.budget), type(girl.maintainance), girl.attractiveness >= a_boy.min_attr)
-			if(a_boy.is_committed == 'False' and (a_boy.budget >= girl.maintainance) and (girl.attractiveness >= a_boy.min_attr)):
-				return a_boy
-
+			if(no_boy != None):
+				if(a_boy.is_committed == 'False' and (a_boy.budget >= girl.maintainance) and (girl.attractiveness >= a_boy.min_attr) and (a_boy.name != no_boy.name)):
+					return a_boy
+			else:
+				if(a_boy.is_committed == 'False' and (a_boy.budget >= girl.maintainance) and (girl.attractiveness >= a_boy.min_attr)):
+					return a_boy
 	
+
 	def __sortby(self, parm, coll):
 		"""
 		

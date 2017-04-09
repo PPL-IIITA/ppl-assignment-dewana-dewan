@@ -3,6 +3,7 @@ This file contains classes of all types of boys and girls
 """
 from math import log, exp
 from weiter import write_gift
+from utils import random
 
 class boy:
     """docstring for boy"""
@@ -25,7 +26,7 @@ class BMiser(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """
-    def gifter(self, girl, arrGFT, arrL, choice = 1):
+    def gifter(self, girl, arrGFT, arrL, choice = 1, randomk = 0, k = 0):
         """
         
         Contains logic for all gifting from the Miser boy to his girlfriend
@@ -47,11 +48,15 @@ class BMiser(boy):
             if(len(girl.gift_received['gift_essential']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
     
@@ -73,7 +78,7 @@ class BGenerous(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """    
-    def gifter(self, girl, arrGFT, arrL, choice = 1):
+    def gifter(self, girl, arrGFT, arrL, choice = 1, randomk = 0, k = 0):
         """
 
         Contains logic for all gifting from Generous boy to his girlfriend
@@ -95,11 +100,15 @@ class BGenerous(boy):
             if(len(girl.gift_received['gift_essential']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
 
@@ -120,7 +129,7 @@ class BGeek(boy):
     name, attractiveness, intelligence, budget, spent, min_attr, is_commited, to_commited, happiness
 
     """
-    def gifter(self, girl, arrGFT, arrL, choice = 1):
+    def gifter(self, girl, arrGFT, arrL, choice = 1, randomk = 0, k = 0):
         """
 
         Contains logic for all gifting from Geek boy to his girlfriend
@@ -150,11 +159,15 @@ class BGeek(boy):
             if(len(girl.gift_received['gift_essential']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
-                        girl.gift_received[gft.name()].append(gft)
+                        arrgft.append(gft)
+                    gft = random.select(arrgft)    
+                    girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
         

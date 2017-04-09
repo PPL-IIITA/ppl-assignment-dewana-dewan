@@ -21,7 +21,6 @@ for i in range(len(arrG) + len(arrB)):
     else:
         newCPL, the_boy, the_girl = cpm.boy_choose(i, arrG, arrB)
     if(newCPL == None):
-        print('noo')
         continue
     arrCPL.append(newCPL)
     the_boy.gifter(the_girl, arrG_all, arrG_lux)

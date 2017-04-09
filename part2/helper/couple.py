@@ -78,28 +78,25 @@ class couple_maker :
 	
 	def girl_choose(self, i, arrG, arrB):
 		i = int(i / 2)
-		print(i, len(arrG), arrG[i].is_committed)
-		if(i < len(arrG) and (arrG[i].is_committed == False)):
-			pass
-		else:
+		# print(i, len(arrG), arrG[i].is_committed)
+		if (i >= len(arrG)):
+			return None, None, None
+		if( arrG[i].is_committed == True):
 			return None, None, None
 		newcpl = None
 		newcpl, boy = self.jodi_bana(arrG[i], arrB)
-		print('asdasda')
 		return newcpl, boy, arrG[i]
 
 	def boy_choose(self, i, arrG, arrB):
 		i = int(i / 2)
-		if(i < len(arrG) and (arrG[i].is_committed == False)):
-			pass
-		else:
+		if (i >= len(arrB)):
 			return None, None, None
 		boy = arrB[i]
 		newcpl = None
 		for j in range(len(arrG)):
-			if(arrG[j].is_committed == False and (boy.budget >= arrG[j].maintainance) and (arrG[j].attractiveness >= boy.min_attr)):
+			if(((arrG[j].is_committed == 'False') and (boy.is_committed == 'False')) and (boy.budget >= arrG[j].maintainance) and (arrG[j].attractiveness >= boy.min_attr)):
 				newcpl = couple(boy.name, arrG[j].name)
-				print('yeess')
+				break
 		return newcpl, boy, arrG[j]
 
 
@@ -128,7 +125,7 @@ class couple_maker :
 			return None, None
 		
 		new_couple = couple(temp_boy.name, girl.name)
-		# print(temp_boy.name, girl.name)
+		print("now committed --> ", temp_boy.name," and ",girl.name)
 		girl.is_committed = 'True'
 		temp_boy.is_committed = 'True'
 		return new_couple, temp_boy

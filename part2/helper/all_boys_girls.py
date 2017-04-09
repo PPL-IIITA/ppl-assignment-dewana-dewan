@@ -6,8 +6,17 @@ from weiter import write_gift
 from utils import random
 
 class boy:
-    """docstring for boy"""
+    """
+
+    Parent class of all boys
+    
+    """
     def __init__(self, obja):
+        """
+
+        initializes a boy
+        
+        """
         self.name = obja['name']
         self.attractiveness = int(obja['attractiveness'])
         self.intelligence = int(obja['intelligence'])
@@ -180,7 +189,11 @@ class BGeek(boy):
         self.happiness = g.intelligence
 
 class girl:
-    """docstring for girl"""
+    """
+
+    parent class of all girls
+
+    """
     def __init__(self, obja):
         """
     

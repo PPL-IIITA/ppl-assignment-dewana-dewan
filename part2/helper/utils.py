@@ -70,14 +70,14 @@ class allocator:
 				else:
 					return self.binarySearch(arrCPL[midpoint+1:], boy)
 
-class random:
+class randm:
 	"""
 	Random Class:
 
 	specifically for question 10
 	helps in selection of random elments
 	"""
-	def select(self, arr):
+	def select(arr):
 		"""
 		funciton select
 
@@ -85,5 +85,7 @@ class random:
 		used in gifting
 		"""
 		i = len(arr)
-		j = random.randint(0, i)
+		if(i == 0):
+			return None
+		j = random.randint(0, i - 1)
 		return arr[j]

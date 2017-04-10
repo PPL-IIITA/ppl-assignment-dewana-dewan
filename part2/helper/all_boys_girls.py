@@ -3,7 +3,7 @@ This file contains classes of all types of boys and girls
 """
 from math import log, exp
 from weiter import write_gift
-from utils import random
+from utils import randm
 
 class boy:
     """
@@ -49,7 +49,8 @@ class BMiser(boy):
                 girl.gift_received[arrGFT[i].name()].append(arrGFT[i])                
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i += 1
-        
+
+        arrgft = []
         if(choice == 2):
             if(len(girl.gift_received['gift_luxury']) == 0 and len(arrL) != 0):
                 self.spent += arrL[0].price
@@ -58,14 +59,16 @@ class BMiser(boy):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft)    
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft) 
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
     
@@ -102,6 +105,7 @@ class BGenerous(boy):
                 lgr.log(self.name, girl.name, arrGFT[i].name(), arrGFT[i].price)
             i -= 1
 
+        arrgft = []
         if(choice == 2):
             if(len(girl.gift_received['gift_luxury']) == 0 and len(arrL) != 0):
                 self.spent += arrL[0].price
@@ -110,14 +114,16 @@ class BGenerous(boy):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft)    
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft)    
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
 
@@ -155,7 +161,8 @@ class BGeek(boy):
                     flg += 1
                 lgr.log(self.name, girl.name,arrGFT[i].name(), arrGFT[i].price)
             i += 1
-        
+
+        arrgft = []
         if(len(arrL) != 0):
             if(self.spent + arrL[0].price <= self.budget and flg == 0):
                 self.spent += arrL[0].price
@@ -169,14 +176,16 @@ class BGeek(boy):
                 for gft in arrGFT:
                     if gft.name() == 'gift_essential':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft)    
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
             if(len(girl.gift_received['gift_utility']) == 0):
                 for gft in arrGFT:
                     if gft.name() == 'gift_utility':
                         arrgft.append(gft)
-                    gft = random.select(arrgft)    
-                    girl.gift_received[gft.name()].append(gft)
+                    gft = randm.select(arrgft)    
+                    if(gft != None):
+                        girl.gift_received[gft.name()].append(gft)
 
         lgr.log_end()
         

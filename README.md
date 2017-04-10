@@ -28,7 +28,7 @@ _To view logs_
 couples: cat ./data/couples.csv
 gifting: cat ./data/gifts_log.csv
 ```
-_To view **[documentation](https://ppl-iiita.github.io/ppl-assignment-dewana-dewan/documentation/)**(click here or)_
+_To view **[documentation](https://ppl-iiita.github.io/ppl-assignment-dewana-dewan/documentation/)**_
 ```
 firefox ./documentation/index.html
 ```

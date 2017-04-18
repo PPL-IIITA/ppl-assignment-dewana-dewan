@@ -36,7 +36,14 @@ python3.5 test.py
 ```python
 python3.5 q<question_no>.py
 ```
-
+*For question 11*
+*Only catches predefined error i.e. only cases like type error, permission error, file not found error etc.*
+```
+cd part3/question11
+cd <type of error>
+python3.5 q11.py
+python3.5 test.py
+```
 _To view logs_
 ```
 couples: cat ./data/couples.csv

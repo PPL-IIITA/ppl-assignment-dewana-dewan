@@ -1,0 +1,11 @@
+type,value,price,utility_value,utility_class,luxury_rating,difficulty
+luxury,30,22,,,9,0
+essential,2,6,,,,
+essential,13,13,,,,
+essential,8,11,,,,
+utility,5,7,0,4,,
+utility,1,20,5,10,,
+luxury,18,11,,,9,0
+luxury,21,40,,,2,2
+essential,7,13,,,,
+utility,10,20,5,3,,
